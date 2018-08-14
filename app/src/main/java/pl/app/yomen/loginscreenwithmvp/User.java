@@ -1,21 +1,12 @@
 package pl.app.yomen.loginscreenwithmvp;
-import com.google.gson.annotations.SerializedName;
 public class User {
-    @SerializedName("id_uzytkownika")
     public int id_uzytkownika;
-    @SerializedName("getLoginResponse")
     public String login;
-    @SerializedName("haslo")
     public String haslo;
-    @SerializedName("nick")
     public String nick;
-    @SerializedName("marka_auta")
     public String marka_auta;
-    @SerializedName("model_auta")
     public String model_auta;
-    @SerializedName("pojemnosc")
     public int pojemnosc;
-    @SerializedName("czyDoladowany")
     public boolean czyDoladowany;
 
     public User() {}
