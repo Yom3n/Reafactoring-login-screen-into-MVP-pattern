@@ -1,9 +1,9 @@
 package pl.app.yomen.loginscreenwithmvp;
 import com.google.gson.annotations.SerializedName;
-public class Uzytkownik {
+public class User {
     @SerializedName("id_uzytkownika")
     public int id_uzytkownika;
-    @SerializedName("login")
+    @SerializedName("getLoginResponse")
     public String login;
     @SerializedName("haslo")
     public String haslo;
@@ -18,10 +18,9 @@ public class Uzytkownik {
     @SerializedName("czyDoladowany")
     public boolean czyDoladowany;
 
-    public Uzytkownik() {
-    }
+    public User() {}
 
-    public Uzytkownik(int idUzytkownika, String login, String haslo, String nick, String markaAuta, String modelAuta, int pojemnosc , boolean czyDoladowany) {
+    public User(int idUzytkownika, String login, String haslo, String nick, String markaAuta, String modelAuta, int pojemnosc , boolean czyDoladowany) {
         this.id_uzytkownika = idUzytkownika;
         this.login = login;
         this.haslo = haslo;
@@ -30,5 +29,9 @@ public class Uzytkownik {
         this.model_auta = modelAuta;
         this.pojemnosc = pojemnosc;
         this.czyDoladowany = czyDoladowany;
+    }
+
+    public boolean isNickEmpty() {
+        return nick == null;
     }
 }

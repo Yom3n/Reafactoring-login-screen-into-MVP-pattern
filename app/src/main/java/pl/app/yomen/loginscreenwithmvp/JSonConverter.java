@@ -5,10 +5,10 @@ import com.google.gson.Gson;
 public class JSonConverter {
     private static final String LOG = "ConvertJSON";
 
-    public static Uzytkownik parseJsonToUzytkownik(String JSonCode)
+    public static User parseJsonToUzytkownik(String JSonCode)
     {
         Gson gson = new Gson();
-        return gson.fromJson(JSonCode, Uzytkownik.class);
+        return gson.fromJson(JSonCode, User.class);
 
     }
 
