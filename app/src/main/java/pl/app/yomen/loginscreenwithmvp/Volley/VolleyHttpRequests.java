@@ -1,4 +1,4 @@
-package pl.app.yomen.loginscreenwithmvp.LoginActivity;
+package pl.app.yomen.loginscreenwithmvp.Volley;
 
 import android.content.Context;
 import android.util.Log;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import pl.app.yomen.loginscreenwithmvp.DaneSerwera;
-import pl.app.yomen.loginscreenwithmvp.VolleySingleton;
+import pl.app.yomen.loginscreenwithmvp.LoginData;
 
 public class VolleyHttpRequests implements HttpRequests {
     private static final String TAG = VolleyHttpRequests.class.getSimpleName();

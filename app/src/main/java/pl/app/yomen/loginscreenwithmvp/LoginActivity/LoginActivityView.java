@@ -14,10 +14,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import pl.app.yomen.loginscreenwithmvp.EditUserDataActivity;
+import pl.app.yomen.loginscreenwithmvp.LoginData;
 import pl.app.yomen.loginscreenwithmvp.MainActivity;
 import pl.app.yomen.loginscreenwithmvp.R;
 import pl.app.yomen.loginscreenwithmvp.RegisterActivity;
 import pl.app.yomen.loginscreenwithmvp.User;
+import pl.app.yomen.loginscreenwithmvp.Volley.VolleyHttpRequests;
 
 public class LoginActivityView extends AppCompatActivity implements Presenter.LoginView {
 

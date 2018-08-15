@@ -1,4 +1,4 @@
-package pl.app.yomen.loginscreenwithmvp.LoginActivity;
+package pl.app.yomen.loginscreenwithmvp;
 
 public class LoginData {
     public String login;

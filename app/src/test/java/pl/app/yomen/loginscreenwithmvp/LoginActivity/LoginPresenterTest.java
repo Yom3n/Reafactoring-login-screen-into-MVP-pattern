@@ -7,6 +7,9 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
+import pl.app.yomen.loginscreenwithmvp.LoginData;
+import pl.app.yomen.loginscreenwithmvp.Volley.HttpRequests;
+
 public class LoginPresenterTest {
     @Rule
     public MockitoRule rule = MockitoJUnit.rule();
@@ -15,20 +18,6 @@ public class LoginPresenterTest {
     Presenter.LoginView view;
     @Mock
     HttpRequests model;
-    @Mock
-    VolleyCallback callback;
-
-
-  /*  @Test
-    public void shouldPassLoginDataToModel()
-    {
-        LoginData userData = new LoginData("someLogin", "sinePassword");
-        Mockito.when(view.getLoginDataFromUser()).thenReturn(userData);
-        Presenter presenter = new Presenter(view, model);
-        presenter.sendLoginData();
-        Mockito.verify(model).getLoginResponse(userData, callback);
-
-    } */
 
     @Test
     public void shoulShowEmptyLoginDataError()

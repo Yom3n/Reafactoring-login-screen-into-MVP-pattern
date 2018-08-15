@@ -3,7 +3,10 @@ package pl.app.yomen.loginscreenwithmvp.LoginActivity;
 import android.util.Log;
 
 import pl.app.yomen.loginscreenwithmvp.JSonConverter;
+import pl.app.yomen.loginscreenwithmvp.LoginData;
 import pl.app.yomen.loginscreenwithmvp.User;
+import pl.app.yomen.loginscreenwithmvp.Volley.HttpRequests;
+import pl.app.yomen.loginscreenwithmvp.Volley.VolleyCallback;
 
 public class Presenter {
 
