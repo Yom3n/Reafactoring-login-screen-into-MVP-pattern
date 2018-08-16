@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import pl.app.yomen.loginscreenwithmvp.EditUserDataActivity;
 import pl.app.yomen.loginscreenwithmvp.LoginData;
@@ -23,7 +24,6 @@ import pl.app.yomen.loginscreenwithmvp.Volley.VolleyHttpRequests;
 
 public class LoginActivityView extends AppCompatActivity implements Presenter.LoginView {
 
-    private User user;
     private String LOG = "LoginActivity";
     private EditText editTextLogin;
     private EditText editTextHaslo;
@@ -103,7 +103,7 @@ public class LoginActivityView extends AppCompatActivity implements Presenter.Lo
     }
 
     @Override
-    public void LogIn(User user) {
+    public void startMainActivity(User user) {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
     }
@@ -118,6 +118,11 @@ public class LoginActivityView extends AppCompatActivity implements Presenter.Lo
         //@TODO user should be stored in shared pref
         Intent intent = new Intent(getApplicationContext(), EditUserDataActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void showServerError() {
+        Toast.makeText(this, getResources().getString(R.string.nie_udalo_sie_polaczyc_z_serwerem), Toast.LENGTH_SHORT).show();
     }
 
     private void showWrongLoginOrPassAnnouncment(TextView textViewZleDane, String s) {

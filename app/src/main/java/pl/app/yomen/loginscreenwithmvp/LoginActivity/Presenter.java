@@ -2,15 +2,12 @@ package pl.app.yomen.loginscreenwithmvp.LoginActivity;
 
 import android.util.Log;
 
-import pl.app.yomen.loginscreenwithmvp.JSonConverter;
 import pl.app.yomen.loginscreenwithmvp.LoginData;
 import pl.app.yomen.loginscreenwithmvp.User;
 import pl.app.yomen.loginscreenwithmvp.Volley.HttpRequests;
 import pl.app.yomen.loginscreenwithmvp.Volley.VolleyCallback;
 
 public class Presenter {
-
-
     private static final String TAG = Presenter.class.getSimpleName();
     private LoginView view;
     private HttpRequests model;
@@ -23,11 +20,14 @@ public class Presenter {
 
         void showProgressBar();
         void hideProgressBar();
-        void LogIn(User user);
+        
+        void startMainActivity(User user);
 
         void showLoginOrPasswordError();
 
         void startEditUserDataActivity(User user);
+
+        void showServerError();
     }
 
     public Presenter(LoginView view, HttpRequests httpRequests) {
@@ -36,40 +36,36 @@ public class Presenter {
     }
     public void sendLoginData() {
         LoginData loginData = view.getLoginDataFromUser();
-        if (userDataNotEmpty(loginData))
-        {
+        if (userDataNotEmpty(loginData)) {
             view.showProgressBar();
             model.getLoginResponse(loginData, new VolleyCallback() {
                 @Override
-                public void onSuccess(String result) {
-                    Log.d(TAG, result);
-                    if (isJSonCode(result)) {
-                        User user = JSonConverter.parseJsonToUzytkownik(result);
-                        Log.i(TAG, "Zalogowano: " + user.login);
-                        if (user.isNickEmpty()) {
-                            view.startEditUserDataActivity(user);
-
-                        } else {
-                            Log.i(TAG, "nick: " + user.nick);
-                            view.LogIn(user);
-                        }
-                    } else { //Błędny getLoginResponse lub hasło
-                        view.showLoginOrPasswordError();
+                public void onSuccess(User user) {
+                    if (user.isNickEmpty()) {
+                        view.startEditUserDataActivity(user);
+                    } else {
+                        Log.i(TAG, "nick: " + user.nick);
+                        view.startMainActivity(user);
                     }
-                   view.hideProgressBar();
+                    view.hideProgressBar();
+                }
+                @Override
+                public void onFail(String result) {
+                    view.showLoginOrPasswordError();
+                    view.hideProgressBar();
+                }
+
+                @Override
+                public void onError(String error) {
+                    view.showServerError();
+                    view.hideProgressBar();
                 }
             });
-        }
-        else view.showEmptyUserDataError();
+        }else view.showEmptyUserDataError(); 
     }
-
-
+    
     private boolean userDataNotEmpty(LoginData loginData) {
         return !loginData.login.equals("") && !loginData.password.equals("");
-    }
-
-    private boolean isJSonCode(String response) {
-        return response.contains("{");
     }
 
 }

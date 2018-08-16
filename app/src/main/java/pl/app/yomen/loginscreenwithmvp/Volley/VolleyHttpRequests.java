@@ -13,7 +13,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import pl.app.yomen.loginscreenwithmvp.DaneSerwera;
+import pl.app.yomen.loginscreenwithmvp.JSonConverter;
 import pl.app.yomen.loginscreenwithmvp.LoginData;
+import pl.app.yomen.loginscreenwithmvp.User;
 
 public class VolleyHttpRequests implements HttpRequests {
     private static final String TAG = VolleyHttpRequests.class.getSimpleName();
@@ -30,16 +32,18 @@ public class VolleyHttpRequests implements HttpRequests {
             @Override
             public void onResponse(String response) {
                 Log.i(TAG, "Response: "+response);
-                callback.onSuccess(response);
-
-
+                if (isJSonCode(response)) {
+                    User user = JSonConverter.parseJsonToUzytkownik(response);
+                    callback.onSuccess(user);
+                }
+                else callback.onFail(response);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                String errorMessage = error.getMessage();
                 Log.d(TAG, error.getMessage());
-
-
+                callback.onError(errorMessage);
             }
         }) {
             @Override
@@ -59,6 +63,10 @@ public class VolleyHttpRequests implements HttpRequests {
 
         VolleySingleton.getInstance(ctx).addToRequestQueue(stringRequest);
     }
+
+        private boolean isJSonCode(String response) {
+            return response.contains("{");
+        }
 
 
 }

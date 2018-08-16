@@ -19,6 +19,8 @@ public class LoginPresenterTest {
     @Mock
     HttpRequests model;
 
+
+
     @Test
     public void shoulShowEmptyLoginDataError()
     {

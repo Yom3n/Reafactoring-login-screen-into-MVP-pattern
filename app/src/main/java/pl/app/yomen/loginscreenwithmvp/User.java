@@ -21,6 +21,14 @@ public class User {
         this.pojemnosc = pojemnosc;
         this.czyDoladowany = czyDoladowany;
     }
+    public User(int idUzytkownika, String login, String haslo, String nick) {
+        this.id_uzytkownika = idUzytkownika;
+        this.login = login;
+        this.haslo = haslo;
+        this.nick = nick;
+    }
+
+
 
     public boolean isNickEmpty() {
         return nick == null;
