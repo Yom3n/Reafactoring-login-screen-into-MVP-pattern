@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -42,16 +43,16 @@ public class LoginActivityView extends AppCompatActivity implements Presenter.Lo
         progressBar.setVisibility(View.INVISIBLE);
 
         //LOGOWANIE
-        Button buttonZaloguj = findViewById(R.id.buttonZaloguj);
-        buttonZaloguj.setOnClickListener(new View.OnClickListener() {
+        CardView cardViewZaloguj = findViewById(R.id.cardViewZaloguj);
+        cardViewZaloguj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 presenter.sendLoginData();
                 }
             });
 
-        Button buttonZarejestruj = findViewById(R.id.buttonZarejestruj);
-        buttonZarejestruj.setOnClickListener(new View.OnClickListener() {
+        TextView textViewZarejestruj = findViewById(R.id.textViewZarejestruj);
+        textViewZarejestruj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startRegisterActivity();
