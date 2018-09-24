@@ -1,7 +1,8 @@
 # Reafactoring-login-screen-into-MVP-pattern
 
 Simple login screen.
-![Alt text](/screenshot.jpg?raw=true "Screenshot")
+![ScreenShot](https://raw.github.com/Yom3n/Reafactoring-login-screen-into-MVP-pattern
+/master/screenshot.png)
 Used technologies:
 - Java
 - Volley
